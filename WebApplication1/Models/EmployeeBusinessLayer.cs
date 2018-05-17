@@ -13,5 +13,12 @@ namespace WebApplication1.Models
             SalesERPDAL salesDal = new SalesERPDAL();
             return salesDal.Employees.ToList();
         }
+        public Employee SaveEmployee(Employee e)
+        {
+            SalesERPDAL salesDal = new SalesERPDAL();
+            salesDal.Employees.Add(e);
+            salesDal.SaveChanges();
+            return e;
+        }
     }
 }

@@ -62,5 +62,22 @@ namespace WebApplication1.Controllers
             employeeListViewModel.Employees = empViewModels;
             return View("Index", employeeListViewModel);
         }
+        public ActionResult AddNew()
+        {
+            return View("CreateEmployee");
+        }
+        public ActionResult SaveEmployee(Employee e, string BtnSubmit)
+        {
+            switch (BtnSubmit)
+            {
+                case "Save Employee":
+                    EmployeeBusinessLayer empBal = new EmployeeBusinessLayer();
+                    empBal.SaveEmployee(e);
+                    return RedirectToAction("Index");
+                case "Cancel":
+                    return RedirectToAction("Index");
+            }
+            return new EmptyResult();
+        }
     }
 }

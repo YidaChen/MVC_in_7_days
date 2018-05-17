@@ -12,20 +12,21 @@
 	<title>MyView</title>
 </head>
 <body>
-	<div>
-		<table>
-			<tr>
-				<th>Employee Name</th>
-				<th>Salary</th>
-			</tr>
-			@foreach (EmployeeViewModel item in Model.Employees)
-			{
+	<a href ="/Employee/AddNew">Add New</a>
+		<div>
+			<table>
 				<tr>
-					<td>@item.EmployeeName</td>
-					<td style="background-color:@item.SalaryColor">@item.Salary</td>
+					<th>Employee Name</th>
+					<th>Salary</th>
 				</tr>
-			}
-		</table>
-	</div>
+				@foreach (EmployeeViewModel item in Model.Employees)
+				{
+					<tr>
+						<td>@item.EmployeeName</td>
+						<td style="background-color:@item.SalaryColor">@item.Salary</td>
+					</tr>
+				}
+			</table>
+		</div>
 </body>
 </html>
