@@ -17,7 +17,7 @@ namespace WebApplication1.Controllers
             return this.CustomerName + "|" + this.Address;
         }
     }
-    public class TestController : Controller
+    public class EmployeeController : Controller
     {
         public string GetString()
         {
@@ -35,7 +35,7 @@ namespace WebApplication1.Controllers
         {
             return "Hi, I am not action method";
         }
-        public ActionResult GetView()
+        public ActionResult Index()
         {
             EmployeeListViewModel employeeListViewModel = new EmployeeListViewModel();
 
@@ -60,8 +60,7 @@ namespace WebApplication1.Controllers
                 empViewModels.Add(empViewModel);
             }
             employeeListViewModel.Employees = empViewModels;
-            employeeListViewModel.UserName = "Admin";
-            return View("MyView", employeeListViewModel);
+            return View("Index", employeeListViewModel);
         }
     }
 }
