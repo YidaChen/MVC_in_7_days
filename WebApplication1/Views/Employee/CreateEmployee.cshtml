@@ -13,14 +13,56 @@
 <body>
 	<div>
 		<form action="/Employee/SaveEmployee" method="post">
-			First Name: <input type="text" id="TxtFName" name="FirstName" value="" /><br />
-			Last Name: <input type="text" id="TxtLName" name="LastName" value="" /><br />
-			Salary: <input type="text" id="TxtSalary" name="Salary" value="" /><br />
-			<input type="submit" name="BtnSubmit" value="Save Employee" />
+			<table>
+				<tr>
+					<td>
+						First Name:
+					</td>
+					<td>
+						<input type="text" id="TxtFName" name="FirstName" value="" />
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="right">
+						@Html.ValidationMessage("FirstName")
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Last Name:
+					</td>
+					<td>
+						<input type="text" id="TxtLName" name="LastName" value="" />
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="right">
+						@Html.ValidationMessage("LastName")
+					</td>
+				</tr>
 
-			<input type="button" name="BtnReset" value="Reset" onclick="ResetForm();" />
+				<tr>
+					<td>
+						Salary:
+					</td>
+					<td>
+						<input type="text" id="TxtSalary" name="Salary" value="" />
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="right">
+						@Html.ValidationMessage("Salary")
+					</td>
+				</tr>
 
-			<input type="submit" name="BtnSubmit" value="Cancel" />
+				<tr>
+					<td colspan="2">
+						<input type="submit" name="BtnSubmit" value="Save Employee" />
+						<input type="submit" name="BtnSubmit" value="Cancel" />
+						<input type="button" name="BtnReset" value="Reset" onclick="ResetForm();" />
+					</td>
+				</tr>
+			</table>
 		</form>
 	</div>
 </body>
