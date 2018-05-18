@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebApplication1.Filters;
 using WebApplication1.Models;
 using WebApplication1.ViewModels;
 
@@ -66,10 +67,12 @@ namespace WebApplication1.Controllers
             employeeListViewModel.FooterData.Year = DateTime.Now.Year.ToString();
             return View("Index", employeeListViewModel);
         }
+        [AdminFilter]
         public ActionResult AddNew()
         {
             return View("CreateEmployee", new CreateEmployeeViewModel());
         }
+        [AdminFilter]
         public ActionResult SaveEmployee(Employee e, string BtnSubmit)
         {
             switch (BtnSubmit)
@@ -100,6 +103,17 @@ namespace WebApplication1.Controllers
                     return RedirectToAction("Index");
             }
             return new EmptyResult();
+        }
+        public ActionResult GetAddNewLink()
+        {
+            if (Convert.ToBoolean(Session["IsAdmin"]))
+            {
+                return PartialView("AddNewLink");
+            }
+            else
+            {
+                return new EmptyResult();
+            }
         }
     }
 }
