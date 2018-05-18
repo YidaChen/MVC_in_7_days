@@ -73,6 +73,7 @@ namespace WebApplication1.Controllers
             return View("CreateEmployee", new CreateEmployeeViewModel());
         }
         [AdminFilter]
+        [ValidateAntiForgeryToken]
         public ActionResult SaveEmployee(Employee e, string BtnSubmit)
         {
             switch (BtnSubmit)
