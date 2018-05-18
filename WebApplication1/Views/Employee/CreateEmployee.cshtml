@@ -1,19 +1,26 @@
 ﻿@using WebApplication1.ViewModels
 @model CreateEmployeeViewModel
 @{
-	Layout = null;
+	Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+@section TitleSection{
+	CreateEmployee
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-	<meta name="viewport" content="width=device-width" />
-	<title>CreateEmployee</title>
-</head>
-<body>
+@section HeaderSection{
+	<script src="~/Scripts/Validations.js"></script>
+	<script>
+		function ResetForm() {
+			document.getElementById('TxtFName').value = "";
+			document.getElementById('TxtLName').value = "";
+			document.getElementById('TxtSalary').value = "";
+		}
+	</script>
+}
+@section ContentBody{
 	<div>
-		<form action="/Employee/SaveEmployee" method="post">
+		<form action="/Employee/SaveEmployee" method="post" id="EmployeeForm">
+			@Html.AntiForgeryToken()
 			<table>
 				<tr>
 					<td>
@@ -55,24 +62,15 @@
 						@Html.ValidationMessage("Salary")
 					</td>
 				</tr>
-				@Html.AntiForgeryToken()
+
 				<tr>
 					<td colspan="2">
+
 						<input type="submit" name="BtnSubmit" value="Save Employee" onclick="return IsValid();" />
 						<input type="submit" name="BtnSubmit" value="Cancel" />
 						<input type="button" name="BtnReset" value="Reset" onclick="ResetForm();" />
 					</td>
 				</tr>
 			</table>
-		</form>
-	</div>
-</body>
-<script>
-	function ResetForm() {
-		document.getElementById('TxtFName').value = "";
-		document.getElementById('TxtLName').value = "";
-		document.getElementById('TxtSalary').value = "";
-	}
-</script>
-<script src="~/Scripts/Validations.js"></script>
-</html>
+</div>
+}
