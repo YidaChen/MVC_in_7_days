@@ -18,6 +18,7 @@
 		@Html.LabelFor(c => c.UserName)
 
 		@Html.TextBoxFor(x => x.UserName)
+		@Html.ValidationMessageFor(x => x.UserName)
 
 		<br />
 
@@ -27,7 +28,7 @@
 
 		<br />
 		<input type="submit" name="BtnSubmit" value="Login" />
-	}
+}
 	</div>
 </body>
 </html>
